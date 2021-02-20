@@ -2,7 +2,7 @@ import { ActionTypes } from './actions';
 import { OrdersViewState } from './types';
 
 export const Reducers = {
-    [ActionTypes.AMOUNT_CHANGED](state: any, amount: string): OrdersViewState {
+    [ActionTypes.AMOUNT_CHANGED](state: OrdersViewState, amount: string): OrdersViewState {
         console.log(`Amount changed from ${state.amount} to ${amount}`);
         return {
             ...state,
@@ -12,7 +12,7 @@ export const Reducers = {
         };
     },
 
-    [ActionTypes.CURRENCY_PAIR_CHANGED](state: any, currencyPair: string): OrdersViewState {
+    [ActionTypes.CURRENCY_PAIR_CHANGED](state: OrdersViewState, currencyPair: string): OrdersViewState {
         console.log(`currencyPair changed from ${state.currencyPair} to ${currencyPair}`);
         return {
             ...state,
@@ -22,7 +22,7 @@ export const Reducers = {
         };
     },
 
-    [ActionTypes.BOOK](state: any): OrdersViewState {
+    [ActionTypes.BOOK](state: OrdersViewState): OrdersViewState {
         return {
             ...state,
             bookingResults : null,
@@ -30,7 +30,7 @@ export const Reducers = {
         }
     },
 
-    [ActionTypes.BOOKING_COMPLETE](state: any, bookingResults: boolean): OrdersViewState {
+    [ActionTypes.BOOKING_COMPLETE](state: OrdersViewState, bookingResults: boolean): OrdersViewState {
         return {
             ...state,
             isBooking : false,
