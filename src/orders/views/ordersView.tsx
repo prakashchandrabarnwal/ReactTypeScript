@@ -49,21 +49,23 @@ export default class OrdersView extends React.Component<AppProps, OrdersViewStat
     }
     render() {
 
+        const { currencyPair, amount } = this.state;
+        
         return (
             <div>
                 <h1>OrdersList</h1>
-                Amount: <input type="text" value={this.state.amount}
+                Amount: <input type="text" value={amount}
                                onChange={(e) => this.onAmountChanged(e.target.value)}/>
                 <br/>
                 Currency:
-                <select value={this.state.currencyPair} onChange={(e) => this.onCurrencyPairChanged(e.target.value)}>
+                <select value={currencyPair} onChange={(e) => this.onCurrencyPairChanged(e.target.value)}>
                     <option value="EURUSD">EURUSD</option>
                     <option value="USDJPY">USDJPY</option>
                     <option value="USDGBP">USDGBP</option>
                 </select>
                 <br/>
                 Order summary: <br/>
-                Amount({this.state.amount})
+                Amount({amount})
                 <br/>
                 <button onClick={(e) => this.onBookRequested()}>
                     book

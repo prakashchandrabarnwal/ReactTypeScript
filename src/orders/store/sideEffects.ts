@@ -5,9 +5,12 @@ import { ActionTypes } from '../store/actions';
 const ordersService = new OrdersService();
 
 export const SideEffects = {
-    [ActionTypes.BOOK](state: OrdersViewState, onDone:  (doneAction: ActionTypes.BOOKING_COMPLETE, ...args: any) => void) {
-        ordersService[ActionTypes.BOOK](state.currencyPair,state.amount, (success:boolean) => {
-            onDone(ActionTypes.BOOKING_COMPLETE, success);
+    [ActionTypes.BOOK](
+        state: OrdersViewState,
+        onDone:  (doneAction: ActionTypes.BOOKING_COMPLETE, isSuccess : boolean) => void) {
+        const {currencyPair ,amount  } = state;
+        ordersService[ActionTypes.BOOK](currencyPair,amount, (isSuccess:boolean) => {
+            onDone(ActionTypes.BOOKING_COMPLETE, isSuccess);
         })
     },
 };
